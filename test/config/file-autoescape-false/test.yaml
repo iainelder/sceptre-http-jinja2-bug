@@ -1,0 +1,6 @@
+template:
+  path: test.yaml.j2
+  type: file
+
+j2_environment:
+  autoescape: false
