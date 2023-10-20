@@ -4,7 +4,7 @@ set -euxo pipefail
 
 export PYTHONWARNINGS=ignore
 
-env --chdir=test/templates python3 -m http.server --bind "127.0.0.1" &
+env --chdir=test/templates python3 -m http.server --bind "127.0.0.1" &> /dev/null &
 http_pid=$!
 
 env --chdir=test sceptre --output=yaml generate file/test.yaml
