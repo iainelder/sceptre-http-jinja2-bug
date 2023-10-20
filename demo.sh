@@ -1,16 +1,14 @@
 #!/bin/env bash
 
-set -euxo pipefail
+set -euo pipefail
 
 export PYTHONWARNINGS=ignore
 
 env --chdir=test/templates python3 -m http.server --bind "127.0.0.1" &> /dev/null &
 http_pid=$!
 
-env --chdir=test sceptre --output=yaml generate file/test.yaml
-
-env --chdir=test sceptre --output=yaml generate http-local/test.yaml
-
-env --chdir=test sceptre --output=yaml generate http-github/test.yaml
+find test/config -mindepth 2 -printf '%P\0' \
+| sort -z \
+| xargs -t -0 -n1 env --chdir=test sceptre --output=yaml generate
 
 kill "$http_pid"
