@@ -1,0 +1,22 @@
+name: Demo
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install project
+        run: poetry install
+
+      - name: Demo Sceptre behavior
+        run: poetry run ./demo.sh
+
