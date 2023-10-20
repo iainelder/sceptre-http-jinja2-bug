@@ -9,6 +9,8 @@ http_pid=$!
 
 env --chdir=test sceptre --output=yaml generate file/test.yaml
 
-env --chdir=test sceptre --output=yaml generate http/test.yaml
+env --chdir=test sceptre --output=yaml generate http-local/test.yaml
+
+env --chdir=test sceptre --output=yaml generate http-github/test.yaml
 
 kill "$http_pid"
