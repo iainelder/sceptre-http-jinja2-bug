@@ -10,7 +10,7 @@ find test/config -type f ! -name config.yaml -printf '%P\0' \
 | sort -z \
 | xargs -0 -n1 sh -c '
       result=$(env --chdir=test sceptre --output=yaml generate "$1")
-      printf "Case: $1\n$result\n\n\n"
+      printf "Case: $1\n$result\n\n"
   ' _
 
 pkill -f http.server
