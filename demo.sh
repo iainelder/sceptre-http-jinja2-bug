@@ -8,6 +8,9 @@ env --chdir=test/templates python3 -m http.server --bind "127.0.0.1" &> /dev/nul
 
 find test/config -type f ! -name config.yaml -printf '%P\0' \
 | sort -z \
-| xargs -t -0 -n1 env --chdir=test sceptre --output=yaml generate
+| xargs -0 -n1 sh -c '
+      result=$(env --chdir=test sceptre --output=yaml generate "$1")
+      printf "Case: $1\n$result\n\n\n"
+  ' _
 
 pkill -f http.server
