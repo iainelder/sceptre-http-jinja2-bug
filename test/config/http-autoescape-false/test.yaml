@@ -2,8 +2,5 @@ template:
   url: http://127.0.0.1:8000/test.yaml.j2
   type: http
 
-sceptre_user_data:
-  value: '"Hello, world!"'
-
 j2_environment:
   autoescape: false

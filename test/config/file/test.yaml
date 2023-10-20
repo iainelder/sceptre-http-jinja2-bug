@@ -1,6 +1,3 @@
 template:
   path: test.yaml.j2
   type: file
-
-sceptre_user_data:
-  value: '"Hello, world!"'

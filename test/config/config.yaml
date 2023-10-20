@@ -1,2 +1,4 @@
 project_code: test
 region: us-east-1
+sceptre_user_data:
+  value: '"Hello, world!"'
